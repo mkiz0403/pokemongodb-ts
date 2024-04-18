@@ -2,12 +2,12 @@ import { promises as fs} from "fs";
 import path from "path";
 import PokemonInterface from "./interface";
 
-const pokemonDateFilePath = path.join(__dirname, 'data', 'pokemon.json')
+const pokemonDataFilePath = path.join('../server', 'data', 'pokemon.json')
 
 
 // getPokemons//
 const getPokemons = async (): Promise<PokemonInterface[]> => {
-  const data = await fs.readFile(pokemonDateFilePath, 'utf8')
+  const data = await fs.readFile(pokemonDataFilePath, 'utf8')
   try{
     let pokemonsList : PokemonInterface[] = JSON.parse(data)
     return pokemonsList;
@@ -22,7 +22,7 @@ const createPokemon = async( newPokemon : PokemonInterface): Promise<PokemonInte
   let pokemonList = await getPokemons();
   try{
     pokemonList.push(newPokemon)
-    await fs.writeFile(pokemonDateFilePath, JSON.stringify(pokemonList, null, 2))
+    await fs.writeFile(pokemonDataFilePath, JSON.stringify(pokemonList, null, 2))
     return newPokemon
   } catch (error) {
     console.log('post 실패',error)
