@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import mongodbRepo from './mongodbRepo';
+import mongodbRepo from './services/mongodbRepo';
 const url = mongodbRepo.url;
 
 const bootStrap = async (useMongoDB: boolean) => {

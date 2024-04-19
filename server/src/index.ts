@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import PokemonInterface from './interface';
-import fileSystemRepo from './fileSystemRepo';
-import mongodbRepo from './mongodbRepo';
+import PokemonInterface from './models/pokemons.Interface';
+import fileSystemRepo from './services/fileSystemRepo';
+import mongodbRepo from './services/mongodbRepo';
 import bootStrap from './bootStrap';
 
 const app = express();
