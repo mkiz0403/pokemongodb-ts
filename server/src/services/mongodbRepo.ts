@@ -1,5 +1,5 @@
-import PokemonModel from '../../models/pokemonSchma';
-import PokemonInterface from './interface';
+import PokemonModel from '../models/pokemon.Schma';
+import PokemonInterface from '../models/pokemons.Interface';
 import dotenv from 'dotenv';
 
 dotenv.config();

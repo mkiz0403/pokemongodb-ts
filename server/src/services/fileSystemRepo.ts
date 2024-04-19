@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import PokemonInterface from './interface';
+import PokemonInterface from '../models/pokemons.Interface';
 
 const pokemonDataFilePath = path.join('../server', 'data', 'pokemon.json');
 
@@ -11,8 +11,6 @@ const getPokemons = async (): Promise<PokemonInterface[]> => {
     let pokemonsList: PokemonInterface[] = JSON.parse(data);
     return pokemonsList;
   } catch (error) {
-    console.error('');
-    console.log('데이터를 불러올 수 없습니다', error);
     throw new Error('데이터를 불러오는데 실패했습니다.');
   }
 };
@@ -38,7 +36,6 @@ const createPokemon = async (newPokemon: PokemonInterface): Promise<PokemonInter
     await fs.writeFile(pokemonDataFilePath, JSON.stringify(pokemonList, null, 2));
     return newPokemon;
   } catch (error) {
-    console.log('post 실패', error);
     throw new Error('포켓몬을 등록하는데 실패했습니다.');
   }
 };
