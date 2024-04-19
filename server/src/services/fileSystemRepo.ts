@@ -22,6 +22,7 @@ const getOnePokemon = async (number: number): Promise<PokemonInterface | undefin
   try {
     let pokemonList = await getPokemons();
     const onePokemon = pokemonList.find(p => p.number === number);
+    console.log(onePokemon);
     return onePokemon || undefined;
   } catch (error) {
     throw new Error('포켓몬 데이터를 불러오지 못했습니다.');
@@ -33,11 +34,30 @@ const createPokemon = async (newPokemon: PokemonInterface): Promise<PokemonInter
   try {
     let pokemonList = await getPokemons();
     pokemonList.push(newPokemon);
+    pokemonList.sort((a, b) => a.number - b.number);
     await fs.writeFile(pokemonDataFilePath, JSON.stringify(pokemonList, null, 2));
     return newPokemon;
   } catch (error) {
     console.log('post 실패', error);
     throw new Error('포켓몬을 등록하는데 실패했습니다.');
+  }
+};
+
+//포켓몬 업데이트
+const updatedPokemon = async (number: number, updatedData: PokemonInterface): Promise<PokemonInterface> => {
+  try {
+    let pokemonList = await getPokemons();
+    const pokemon = pokemonList.findIndex(p => p.number === number);
+    if (pokemon === -1) {
+      throw new Error('포켓몬을 찾을 수 없습니다.');
+    }
+
+    pokemonList[pokemon] = updatedData;
+
+    await fs.writeFile(pokemonDataFilePath, JSON.stringify(pokemonList, null, 2), 'utf8');
+    return updatedData;
+  } catch (error) {
+    throw new Error('데이터를 찾을 수 없습니다.');
   }
 };
 
@@ -56,6 +76,9 @@ const deleteOnePokemon = async (number: number): Promise<void> => {
   try {
     let pokemonList = await getPokemons();
     const filterdPokemon = pokemonList.filter(p => p.number !== number);
+    if (!filterdPokemon) {
+      throw new Error('포켓몬을 찾을 수 없습니다.');
+    }
     await fs.writeFile(pokemonDataFilePath, JSON.stringify(filterdPokemon), 'utf8');
     console.log(`${number} 번 포켓몬이 삭제되었습니다.`);
   } catch (error) {
@@ -63,4 +86,4 @@ const deleteOnePokemon = async (number: number): Promise<void> => {
   }
 };
 
-export default { getPokemons, getOnePokemon, createPokemon, deleteAllPokemon, deleteOnePokemon };
+export default { getPokemons, getOnePokemon, createPokemon, updatedPokemon, deleteAllPokemon, deleteOnePokemon };
