@@ -19,16 +19,24 @@ const getOnePokemon = async (number: number): Promise<PokemonInterface | null> =
 };
 
 const createPokemon = async (data: PokemonInterface): Promise<PokemonInterface> => {
+  console.log(data);
   const pokemon = new PokemonModel(data);
   return await pokemon.save();
 };
 
 const updatedPokemon = async (number: number, data: PokemonInterface): Promise<PokemonInterface | null> => {
-  const pokemon = await PokemonModel.findByIdAndUpdate({ number }, data, { new: true });
-  if (!pokemon) {
-    throw new Error('일치하는 포켓몬이 없습니다.');
+  try {
+    console.log('Updating pokemon with number:', number, 'Data:', data);
+    const pokemon = await PokemonModel.findOneAndUpdate({ number }, data, { new: true });
+    if (!pokemon) {
+      console.error(`No pokemon found with number: ${number}`);
+      throw new Error('일치하는 포켓몬이 없습니다.');
+    }
+    return pokemon;
+  } catch (error) {
+    console.error('업데이트 실패:', error);
+    throw new Error('업데이트 처리 중 서버 오류 !!!!!!!!!!');
   }
-  return pokemon;
 };
 
 const deleteAllPokemon = async (): Promise<void> => {
