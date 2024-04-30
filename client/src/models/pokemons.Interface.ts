@@ -32,5 +32,5 @@ export interface ShareModalProps {
 export interface MenubarProp {
   onOpenCreateModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onAllPokemonDelete: () => void;
-  onSearch: (number: number) => void;
+  onSearch: (number: number | null) => void;
 }
