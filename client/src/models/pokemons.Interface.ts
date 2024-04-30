@@ -13,13 +13,12 @@ export interface PokemonsProps extends PokemonInterface {
 
 export interface UpdatePokemonProps {
   refreshPokemons: () => void;
-  onOpen: boolean; // Changed from a function to a boolean
-  onClose: () => void; // Simple function without parameters
+  onOpen: boolean;
+  onClose: () => void;
   pokemonData: PokemonInterface;
 }
 
 export interface CreateProps extends Pick<UpdatePokemonProps, 'onOpen' | 'onClose'> {}
-
 
 export interface ShareModalProps {
   open: boolean;
@@ -28,4 +27,10 @@ export interface ShareModalProps {
   title: string;
   message: string;
   confirmButtonText: string;
+}
+
+export interface MenubarProp {
+  onOpenCreateModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onAllPokemonDelete: () => void;
+  onSearch: (number: number) => void;
 }
