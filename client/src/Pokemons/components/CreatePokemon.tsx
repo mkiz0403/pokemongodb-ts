@@ -11,7 +11,7 @@ import { CreateProps } from '../../models/pokemons.Interface';
 export default function CreatePokemon({ onOpen, onClose }: CreateProps) {
   const [formData, setFormData] = useState({
     name: '',
-    number: 0,
+    number: '',
     imageUrl: '',
     types: '',
   });
@@ -33,14 +33,14 @@ export default function CreatePokemon({ onOpen, onClose }: CreateProps) {
     try {
       console.log(formData);
       await createPokemon({
-        number: number,
+        number: parseInt(number, 10),
         name,
         types: formattedTypes,
         imageUrl,
       });
       console.log('새로운 포켓몬 데이터:', formData);
       onClose();
-      setFormData({ name: '', number: 0, imageUrl: '', types: '' });
+      setFormData({ name: '', number: '', imageUrl: '', types: '' });
     } catch (error) {
       console.error('Failed to create new pokemon', error);
     }
