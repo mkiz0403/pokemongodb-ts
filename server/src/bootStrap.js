@@ -18,6 +18,7 @@ const url = mongodbRepo_1.default.url;
 const bootStrap = (useMongoDB) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (useMongoDB) {
+            console.log(url);
             yield mongoose_1.default.connect(url);
             console.log(`MongoDB 서버에 연결되었습니다.`);
         }

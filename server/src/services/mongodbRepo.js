@@ -15,9 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const pokemon_Schma_1 = __importDefault(require("../models/pokemon.Schma"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const username = encodeURIComponent(process.env.USERNAME || '');
-const password = encodeURIComponent(process.env.PASSWORD || '');
-const dataBase = encodeURIComponent(process.env.DATABASE || '');
+const username = 'ChatterBox';
+const password = 'sHOUIlWbFwwte4YJ';
+const dataBase = 'PokemongoDB';
+const port = 4000;
+// const username = encodeURIComponent(process.env.USERNAME || '');
+// const password = encodeURIComponent(process.env.PASSWORD || '');
+// const dataBase = encodeURIComponent(process.env.DATABASE || '');
+// const url: string = `mongodb+srv://${username}:${password}@cluster0.ljagamd.mongodb.net/${dataBase}`;
 const url = `mongodb+srv://${username}:${password}@cluster0.ljagamd.mongodb.net/${dataBase}`;
 const getPokemons = () => __awaiter(void 0, void 0, void 0, function* () {
     return yield pokemon_Schma_1.default.find();
