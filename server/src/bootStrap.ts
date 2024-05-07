@@ -5,6 +5,7 @@ const url = mongodbRepo.url;
 const bootStrap = async (useMongoDB: boolean) => {
   try {
     if (useMongoDB) {
+      console.log(url);
       await mongoose.connect(url);
       console.log(`MongoDB 서버에 연결되었습니다.`);
     } else {

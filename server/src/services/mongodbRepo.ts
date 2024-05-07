@@ -4,10 +4,16 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const username = encodeURIComponent(process.env.USERNAME || '');
-const password = encodeURIComponent(process.env.PASSWORD || '');
-const dataBase = encodeURIComponent(process.env.DATABASE || '');
+const username = 'ChatterBox';
+const password = 'sHOUIlWbFwwte4YJ';
+const dataBase = 'PokemongoDB';
+const port = 4000;
 
+// const username = encodeURIComponent(process.env.USERNAME || '');
+// const password = encodeURIComponent(process.env.PASSWORD || '');
+// const dataBase = encodeURIComponent(process.env.DATABASE || '');
+
+// const url: string = `mongodb+srv://${username}:${password}@cluster0.ljagamd.mongodb.net/${dataBase}`;
 const url: string = `mongodb+srv://${username}:${password}@cluster0.ljagamd.mongodb.net/${dataBase}`;
 
 const getPokemons = async (): Promise<PokemonInterface[]> => {
