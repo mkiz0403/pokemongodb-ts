@@ -2,7 +2,7 @@
   {
     "number": 1,
     "name": "Bulbasaur",
-    "types": ["Grass", "buga"],
+    "types": ["Grass", "Poison"],
     "imageUrl": "http://vignette4.wikia.nocookie.net/nintendo/images/4/43/Bulbasaur.png/revision/latest?cb=20141002083518&path-prefix=en"
   },
   {
@@ -904,11 +904,5 @@
     "name": "Mew",
     "types": ["Psychic"],
     "imageUrl": "http://vignette3.wikia.nocookie.net/nintendo/images/b/bf/Mew.png/revision/latest?cb=20141002090523&path-prefix=en"
-  },
-  {
-    "number": 153,
-    "name": "test",
-    "types": ["fire", "water"],
-    "imageUrl": "http://vignette2.wikia.nocookie.net/nintendo/images/b/be/Venusaur.png/revision/latest?cb=20141002083423&path-prefix=en"
   }
 ]

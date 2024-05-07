@@ -25,20 +25,28 @@ function Allpokemon() {
     }
   }
 
-  const handleSearch = async (number: number): Promise<void> => {
+  const handleSearch = async (number: number | null): Promise<void> => {
     if (!number) {
-      setSearchedPokemon(null);
-      return;
-    }
-
-    try {
-      const data = await getOnePokemon(number);
-      if (data) {
-        setSearchedPokemon(data);
+      try {
+        const allDate = await getPokemons();
+        setPokemons(allDate);
+        setSearchedPokemon(null);
+      } catch (error) {
+        console.log('포켓몬 검색 실패', error);
+        setSearchedPokemon(null);
       }
-    } catch (error) {
-      console.log('포켓몬 검색 실패', error);
-      setSearchedPokemon(null);
+    } else {
+      try {
+        const data = await getOnePokemon(number);
+        if (data) {
+          setSearchedPokemon(data);
+        } else {
+          setSearchedPokemon(null);
+        }
+      } catch (error) {
+        console.log('포켓몬 검색 실패', error);
+        setSearchedPokemon(null);
+      }
     }
   };
 

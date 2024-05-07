@@ -9,6 +9,6 @@
 ## 모든 포케몬 삭제하기
   * deleteAllPokemon
 ## 하나의 포켓몬 삭제하기
-  * deleteOnePokemon
+  * 1
 
 ### 의존성 역전을 통해 로컬DB와 MongoDB 교차 운영

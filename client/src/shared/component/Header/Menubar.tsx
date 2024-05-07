@@ -14,7 +14,7 @@ export default function Menubar({ onAllPokemonDelete, onSearch, onOpenCreateModa
     if (!isNaN(number)) {
       onSearch(number);
     } else {
-      console.log('올바른 숫자를 입력하세요.');
+      onSearch(null);
     }
   }
 
