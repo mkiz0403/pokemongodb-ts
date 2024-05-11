@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { PokemonInterface } from '../models/pokemons.Interface';
 
-const apiUrl = 'http://ec2-3-34-173-63.ap-northeast-2.compute.amazonaws.com:4000/pokemons';
+const apiUrl = '54.180.106.202:4000/pokemons';
 const pokemonAxios = axios.create({ baseURL: apiUrl });
 
 export async function getPokemons(): Promise<PokemonInterface[]> {
