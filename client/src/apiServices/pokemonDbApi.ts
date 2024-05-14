@@ -9,7 +9,6 @@ const pokemonAxios = axios.create({ baseURL: apiUrl });
 export async function getPokemons(): Promise<PokemonInterface[]> {
   try {
     const { data } = await pokemonAxios.get<PokemonInterface[]>('/');
-    console.log('Fetched data:', data);
     return data;
   } catch (error) {
     console.error('Error fetching pokemons:', error);
