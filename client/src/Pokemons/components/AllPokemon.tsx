@@ -19,6 +19,7 @@ function Allpokemon() {
   async function fetchPokemons() {
     try {
       const data = await getPokemons();
+      console.log('Pokemons in component:', data);
       setPokemons(data);
     } catch (error) {
       console.error('Api 데이터를 불러오는데 실패 했습니다.', error);

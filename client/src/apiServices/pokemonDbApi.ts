@@ -6,8 +6,14 @@ const apiUrl = '54.180.133.19';
 const pokemonAxios = axios.create({ baseURL: apiUrl });
 
 export async function getPokemons(): Promise<PokemonInterface[]> {
-  const { data } = await pokemonAxios.get<PokemonInterface[]>('/');
-  return data;
+  try {
+    const { data } = await pokemonAxios.get<PokemonInterface[]>('/');
+    console.log('Fetched data:', data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching pokemons:', error);
+    return [];
+  }
 }
 
 export async function getOnePokemon(number: number): Promise<PokemonInterface> {
